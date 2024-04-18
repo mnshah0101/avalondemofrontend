@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 
 import Slide from '@mui/material/Slide';
 import Input from '@mui/material/Input';
@@ -61,18 +61,17 @@ export default function Searchbar() {
   };
 
   function changeSearch(e) {
-    if (time_stamps.length > 0) {
-      const last = time_stamps[time_stamps.length - 1];
-      const now = new Date();
-      const diff = now - last;
-      if (diff < 1000) {
-        return;
-      }
-    }
-    time_stamps.push(new Date());
-
     setSearch(e.target.value);
   }
+
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      console.log(search);
+      // Send Axios request here
+    }, 3000);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [search]);
 
   return (
     <ClickAwayListener onClickAway={handleClose}>

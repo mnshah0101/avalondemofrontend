@@ -9,8 +9,9 @@ export const UserPage = lazy(() => import('src/pages/rachel'));
 export const LoginPage = lazy(() => import('src/pages/login'));
 export const FilesPage = lazy(() => import('src/pages/files'));
 export const Page404 = lazy(() => import('src/pages/page-not-found'));
-export const FileUpload = lazy(() => import('src/pages/file-upload'));
-
+export const Case = lazy(() => import('src/pages/case'));
+export const FilePage = lazy(() => import('src/pages/file'));
+export const Rachel2 = lazy(() => import('src/pages/rachel2'));
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -25,27 +26,24 @@ export default function Router() {
       ),
       children: [
         { element: <IndexPage />, index: true },
-        { path: 'rachel', element: <UserPage /> },
+        { path: 'rachel', element: <Rachel2 /> },
         { path: 'files', element: <FilesPage /> },
         { path: 'cases', element: <CasePage /> },
-         { path: 'file-upload', element: <FileUpload /> },
-
+        { path: 'case/:id', element: <Case /> },
+        { path: 'file/:id', element: <FilePage /> },
+        { path: 'rachel2', element: <Rachel2 /> },
       ],
     },
-    {
-      path: 'login',
-      element: <LoginPage />,
-    },
+
     {
       path: '404',
       element: <Page404 />,
     },
-   
+
     {
       path: '*',
       element: <Navigate to="/404" replace />,
     },
-    
   ]);
 
   return routes;

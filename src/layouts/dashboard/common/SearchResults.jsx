@@ -41,7 +41,7 @@ export default function SearchResults() {
     [search]
   );
 
-  if (search === '' || results === '') {
+  if (search === '' || results.length < 1) {
     return <></>;
   }
 

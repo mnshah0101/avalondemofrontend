@@ -30,14 +30,10 @@ const Logo = forwardRef(({ disabledLink = false, sx, ...other }, ref) => {
 
   const logo = (
     <>
-
-    <div className="" style={{paddingLeft:'80px', marginTop:'25px'}}>
-    
-    <img src="/public/assets/logo_black.png" alt="logo" width={100}  />
-    </div>
-    
+      <div className="" style={{ paddingLeft: '25px', marginTop: '25px' }}>
+        <img src="/public/assets/logo_black.png" alt="logo" width={60} />
+      </div>
     </>
-   
   );
 
   if (disabledLink) {

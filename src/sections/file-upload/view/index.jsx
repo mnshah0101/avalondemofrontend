@@ -40,6 +40,7 @@ export default function FileUpload() {
       if (data.success === 'Successfully uploaded') {
         console.log('Files uploaded successfully');
         setUploaded(true);
+        window.location.reload();
       }
     } catch (err) {
       console.log(err);

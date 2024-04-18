@@ -41,9 +41,9 @@ export default function Nav({ openNav, onCloseNav }) {
     <Box
       sx={{
         my: 3,
-        mx: 2.5,
+        mx: 1.5,
         py: 2,
-        px: 2.5,
+        px: 3,
         display: 'flex',
         borderRadius: 1.5,
         alignItems: 'center',
@@ -51,28 +51,18 @@ export default function Nav({ openNav, onCloseNav }) {
       }}
     >
       <Avatar src={account.photoURL} alt="photoURL" />
-
-      <Box sx={{ ml: 2 }}>
-        <Typography variant="subtitle2">{account.displayName}</Typography>
-
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          {account.role}
-        </Typography>
-      </Box>
     </Box>
   );
 
   const renderMenu = (
-    <Stack component="nav" spacing={0.5} sx={{ px: 2 }}>
+    <Stack component="nav" spacing={1.5} sx={{ px: 2 }}>
       {navConfig.map((item) => (
         <NavItem key={item.title} item={item} />
       ))}
     </Stack>
   );
 
-  const renderUpgrade = (
-   <></>
-  );
+  const renderUpgrade = <></>;
 
   const renderContent = (
     <Scrollbar
@@ -101,7 +91,7 @@ export default function Nav({ openNav, onCloseNav }) {
     <Box
       sx={{
         flexShrink: { lg: 0 },
-        width: { lg: NAV.WIDTH },
+        width: { lg: '150px' },
       }}
     >
       {upLg ? (
@@ -109,7 +99,7 @@ export default function Nav({ openNav, onCloseNav }) {
           sx={{
             height: 1,
             position: 'fixed',
-            width: NAV.WIDTH,
+            width: '120px',
             borderRight: (theme) => `dashed 1px ${theme.palette.divider}`,
           }}
         >
@@ -165,11 +155,9 @@ function NavItem({ item }) {
         }),
       }}
     >
-      <Box component="span" sx={{ width: 24, height: 24, mr: 2 }}>
+      <Box component="span" sx={{ width: 20, height: 20, ml: 1.6 }}>
         {item.icon}
       </Box>
-
-      <Box component="span">{item.title} </Box>
     </ListItemButton>
   );
 }

@@ -10,16 +10,12 @@ import Typography from '@mui/material/Typography';
 
 import { fDate } from 'src/utils/format-time';
 
-
 // ----------------------------------------------------------------------
 
 export default function PostCard({ post, index }) {
   const { cover, title, createdAt } = post;
 
   const latestPostLarge = true;
-
-
-  
 
   const renderTitle = (
     <Link
@@ -33,7 +29,7 @@ export default function PostCard({ post, index }) {
         display: '-webkit-box',
         WebkitBoxOrient: 'vertical',
         ...(latestPostLarge && { typography: 'h5', height: 60 }),
-        ...((latestPostLarge) && {
+        ...(latestPostLarge && {
           color: 'common.white',
         }),
       }}
@@ -41,7 +37,6 @@ export default function PostCard({ post, index }) {
       {title}
     </Link>
   );
-
 
   const renderCover = (
     <Box
@@ -65,7 +60,7 @@ export default function PostCard({ post, index }) {
       sx={{
         mb: 2,
         color: 'text.disabled',
-        ...((latestPostLarge ) && {
+        ...(latestPostLarge && {
           opacity: 0.48,
           color: 'common.white',
         }),
@@ -75,55 +70,52 @@ export default function PostCard({ post, index }) {
     </Typography>
   );
 
-
-
   return (
     <Grid xs={12} sm={latestPostLarge ? 12 : 6} md={latestPostLarge ? 6 : 3}>
-      <Card>
-        <Box
-          sx={{
-            position: 'relative',
-            pt: 'calc(100% * 3 / 4)',
-            ...((latestPostLarge) && {
-              pt: 'calc(100% * 4 / 3)',
-              '&:after': {
-                top: 0,
-                content: "''",
-                width: '100%',
-                height: '100%',
+      <a href="/case/citizensunitedvfec">
+        <Card>
+          <Box
+            sx={{
+              position: 'relative',
+              pt: 'calc(100% * 3 / 4)',
+              ...(latestPostLarge && {
+                pt: 'calc(100% * 4 / 3)',
+                '&:after': {
+                  top: 0,
+                  content: "''",
+                  width: '100%',
+                  height: '100%',
+                  position: 'absolute',
+                  bgcolor: (theme) => alpha(theme.palette.grey[900], 0.72),
+                },
+              }),
+              ...(latestPostLarge && {
+                pt: {
+                  xs: 'calc(100% * 4 / 3)',
+                  sm: 'calc(100% * 3 / 4.66)',
+                },
+              }),
+            }}
+          >
+            {renderCover}
+          </Box>
+
+          <Box
+            sx={{
+              p: (theme) => theme.spacing(4, 3, 3, 3),
+              ...(latestPostLarge && {
+                width: 1,
+                bottom: 0,
                 position: 'absolute',
-                bgcolor: (theme) => alpha(theme.palette.grey[900], 0.72),
-              },
-            }),
-            ...(latestPostLarge && {
-              pt: {
-                xs: 'calc(100% * 4 / 3)',
-                sm: 'calc(100% * 3 / 4.66)',
-              },
-            }),
-          }}
-        >
+              }),
+            }}
+          >
+            {renderDate}
 
-
-          {renderCover}
-        </Box>
-
-        <Box
-          sx={{
-            p: (theme) => theme.spacing(4, 3, 3, 3),
-            ...((latestPostLarge ) && {
-              width: 1,
-              bottom: 0,
-              position: 'absolute',
-            }),
-          }}
-        >
-          {renderDate}
-
-          {renderTitle}
-
-        </Box>
-      </Card>
+            {renderTitle}
+          </Box>
+        </Card>
+      </a>
     </Grid>
   );
 }

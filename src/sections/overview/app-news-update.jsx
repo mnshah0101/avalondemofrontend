@@ -24,7 +24,9 @@ export default function AppNewsUpdate({ title, subheader, list, ...other }) {
       <Scrollbar>
         <Stack spacing={3} sx={{ p: 3, pr: 0 }}>
           {list.map((news) => (
-            <NewsItem key={news.id} news={news} />
+            <a href={`/file/${news.id}` || ''} target="_blank" rel="noopener noreferrer">
+              <NewsItem key={news.id} news={news} />
+            </a>
           ))}
         </Stack>
       </Scrollbar>
@@ -53,7 +55,7 @@ AppNewsUpdate.propTypes = {
 // ----------------------------------------------------------------------
 
 function NewsItem({ news }) {
-  const {  title, description, postedAt } = news;
+  const { title, description, postedAt } = news;
 
   return (
     <Stack direction="row" alignItems="center" spacing={2}>

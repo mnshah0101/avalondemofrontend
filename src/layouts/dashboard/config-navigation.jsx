@@ -13,18 +13,10 @@ const navConfig = [
     icon: icon('ic_analytics'),
   },
   {
-    title: 'Files',
-    path: '/files',
-    icon: icon('ic_blog'),
-  },
-  {
     title: 'Rachel',
     path: '/rachel',
     icon: icon('ic_user'),
-  }
-  
-  
- 
+  },
 ];
 
 export default navConfig;

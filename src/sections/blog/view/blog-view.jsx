@@ -27,6 +27,7 @@ export default function BlogView() {
 
       <Stack mb={5} direction="row" alignItems="center" justifyContent="space-between">
         <PostSearch posts={posts} />
+
         <PostSort
           options={[
             { value: 'latest', label: 'Latest' },

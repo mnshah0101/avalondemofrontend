@@ -1,7 +1,7 @@
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import AppNewsUpdate from 'src/sections/overview/app-news-update';
 
 import { faker } from '@faker-js/faker/locale/af_ZA';
@@ -114,9 +114,11 @@ export default function Documents() {
     if (documents.length > 0) return;
 
     try {
-      const response = await fetch('http://127.0.0.1:5000/retrieveFiles');
+      const response = await fetch('http://127.0.0.1:5000/retrieveFiles', {
+        method: 'GET',
+      });
       const data = await response.json();
-      console.log(data);
+      data.reverse();
 
       setDocuments(data);
     } catch (err) {
@@ -124,7 +126,9 @@ export default function Documents() {
     }
   }
 
-  fetchData();
+  useEffect(() => {
+    fetchData();
+  });
 
   return (
     <Container>
@@ -132,9 +136,9 @@ export default function Documents() {
         <AppNewsUpdate
           title="Files"
           list={documents.map((_, index) => ({
-            id: faker.string.uuid(),
+            id: documents[index].id,
             title: documents[index].file,
-            description: faker.lorem.paragraph(),
+            description: documents[index].summary || 'No summary available',
             postedAt: documents[index].timestamp,
           }))}
         />
